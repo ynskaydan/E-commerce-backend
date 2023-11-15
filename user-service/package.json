@@ -1,0 +1,16 @@
+{
+  "name": "user-service",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "consul": "^1.2.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.17.1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
