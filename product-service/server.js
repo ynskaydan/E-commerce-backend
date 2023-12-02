@@ -21,10 +21,10 @@ consul.agent.check.register({
   deregistercriticalserviceafter: '30s',
 });
 
-app.get('/product/:productId', (req, res) => {
-  // Urun servisi işlemleri
+ app.get('/product/:productId', (req, res) => {
+  productRouter.get('/:productId', (req, res) => {  
   res.send(`product info retrieved: ${req.params.productId}`);
-});
+})});
 
 app.get('/health', (req, res) => {
   res.sendStatus(200);
@@ -57,4 +57,4 @@ productRouter.put('/:productId', (req, res) => {
 // Delete a product
 productRouter.delete('/:productId', (req, res) => {
   // Implementation for deleting a product
-});
+}); 

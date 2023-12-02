@@ -18,6 +18,27 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    address: {
+        type: String,
+        required: false
+    },
+    phone: {
+        type: String,
+        required: false
+    },
+    cart: {
+        type: Array,
+        required: false
+    },
+    orders: {
+        type: Array,
+        required: false
+    },
+    role: {
+        type: String,
+        required: false
+    },
+
     
 });
 

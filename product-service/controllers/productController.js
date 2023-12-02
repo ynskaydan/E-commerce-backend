@@ -25,7 +25,8 @@ const getProduct = async (req, res) => {
       const product = await Product.findOne({id});
       if(!product) {
         return res.status(400).send({ message: 'Product does not exist'});
-      }   
+      }
+      console.log("product: ", product);   
       return res.status(201).json(product)
     }
     catch (error) {
@@ -46,6 +47,9 @@ const getAllProducts = async (req, res) => {
     }
     
 };
+
+
+
 
 module.exports = {
     addProduct,
