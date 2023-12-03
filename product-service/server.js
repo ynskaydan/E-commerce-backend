@@ -2,6 +2,7 @@ const express = require('express');
 const Consul = require('consul');
 const productRoutes = require('./routes/productRoutes');
 const connectDB = require('./config/dbConfig');
+const redisClient = require('./config/redisConfig'); // Redis istemcisini import edin
 const app = express();
 const port = 3002; 
 const consul = new Consul();

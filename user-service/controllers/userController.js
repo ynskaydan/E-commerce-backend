@@ -1,20 +1,27 @@
 const User = require("../models/User.js");
+const jwt = require('jsonwebtoken')
 
 const registerUser = (req, res) => {
-    const { username, password } = req.body;
+    const { username, email, password } = req.body;
     if (users[username]) {
         return res.status(400).send({ message: 'User already exists' });
     }
-    users[username] = { password, profile: {} }; // Password should be hashed in a real app
+    users[username] = { password, profile: {} }; 
     res.status(201).send({ message: 'User registered successfully' });
 };
 
-const loginUser = (req, res) => {
+const loginUser = async (req, res) => {
     const { username, password } = req.body;
-    const user = users[username];
-    if (!user || user.password !== password) { // Password comparison should be secure in a real app
-        return res.status(401).send({ message: 'Invalid credentials' });
+    const user = await User.findOne({ username });
+    if (user && (await bcrypt.compare(password, user.password))) {
+        const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        res.json({ token });
+    } else {
+        res.status(401).json({ message: 'Invalid credentials' });
     }
+
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    res.json({ token });
     res.status(200).send({ message: 'User logged in successfully' });
 };
 
