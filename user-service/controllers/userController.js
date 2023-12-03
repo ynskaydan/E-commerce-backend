@@ -1,4 +1,4 @@
-let users = {}; // This should be replaced with a real database in production
+const User = require("../models/User.js");
 
 const registerUser = (req, res) => {
     const { username, password } = req.body;

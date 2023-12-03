@@ -14,6 +14,10 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: false
     },
+    stock: {
+        type: Number,
+        required: true
+    },
     price: {
         type: Number,
         required: true
@@ -24,10 +28,6 @@ const productSchema = new mongoose.Schema({
     },
     image: {
         type: String,
-        required: false
-    },  
-    quantity: {
-        type: Number,
         required: false
     },  
     rating: {
@@ -47,7 +47,6 @@ const productSchema = new mongoose.Schema({
         required: false
     },
 
-    // You can add more fields as per your requirement
 });
 
 const Product = mongoose.model('Product', productSchema);

@@ -1,4 +1,4 @@
-const Product = require("../models/product");
+const Product = require("../models/product.js");
 
 const addProduct = async (req, res) => {
     try {
@@ -36,7 +36,9 @@ const getProduct = async (req, res) => {
 };
 
 const getAllProducts = async (req, res) => {
+    console.log("getAllProducts");
     try{
+        console.log("getAllProducts");
         const products = await Product.find();
         if(products.length == 0) {
             return res.status(400).send({message: 'Products are empty!'});

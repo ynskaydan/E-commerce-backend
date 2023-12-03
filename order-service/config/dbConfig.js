@@ -1,16 +1,12 @@
 const mongoose = require('mongoose');
-
+require('dotenv').config();
+const mongoURI = process.env.MONGO_URI;
 const connectDB = async () => {
     try {
-        await mongoose.connect('mongodb://localhost:27017/orderServiceDB', {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-            useCreateIndex: true,
-            useFindAndModify: false
-        });
-        console.log('MongoDB Connected: OrderService');
-    } catch (err) {
-        console.error(err.message);
+        await mongoose.connect(mongoURI);
+        console.log('MongoDB connected...');
+    } catch (error) {
+        console.error(error.message);
         process.exit(1);
     }
 };
