@@ -42,12 +42,12 @@ cd <project-name>
 ```
 #### 2. Install Dependencies
 ```sh
-cd user-service && npm install
+cd auth-service && npm install
 cd ../product-service && npm install
 cd ../order-service && npm install
 ```
 #### 3. Set Up Environment Variables
-In each service, create a .env file and configure your environment variables. For example, in the user-service:
+In each service, create a .env file and configure your environment variables. For example, in the auth-service:
 ```sh
 MONGO_URI=mongodb://localhost:27017/userService
 PORT=3001
@@ -62,7 +62,7 @@ http {
     server {
         listen 80;
 
-        location /user-service {
+        location /auth-service {
             proxy_pass http://localhost:3001;
         }
 
